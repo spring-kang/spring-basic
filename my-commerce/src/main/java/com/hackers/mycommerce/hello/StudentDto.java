@@ -6,11 +6,11 @@ import lombok.Setter;
 
 @Builder
 @Getter @Setter
-public class HelloStudentDto {
+public class StudentDto {
     String name;
 
-    public static HelloStudentDto from(HelloStudent student) {
-        return HelloStudentDto.builder()
+    public static StudentDto from(Student student) {
+        return StudentDto.builder()
                 .name(student.getName())
                 .build();
     }

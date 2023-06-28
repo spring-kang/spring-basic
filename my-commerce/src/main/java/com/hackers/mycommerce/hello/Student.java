@@ -6,13 +6,12 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
-@Getter
+@Setter @Getter
 @Entity
-public class HelloProduct {
-    @Id
-    @GeneratedValue
+public class Student {
+    @Id @GeneratedValue
     private Long id;
     private String name;
-    private double price;
+
+    private Boolean isAdult;
 }

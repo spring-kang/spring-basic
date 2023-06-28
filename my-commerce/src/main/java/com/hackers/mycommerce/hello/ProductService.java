@@ -1,5 +1,6 @@
 package com.hackers.mycommerce.hello;
 
+import com.hackers.mycommerce.hello.config.DiscountPolicy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -12,20 +13,25 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class HelloProductService {
+public class ProductService {
 
-    private final HelloProductRepository helloProductRepository;
+    private final ProductRepository productRepository;
     private final PlatformTransactionManager transactionManager;
 
-    public void updateProductPriceV1(Long productId, double newPrice) {
+    public ProductDto getProduct(String name) {
+        Optional<Product> product = productRepository.findByName(name);
+        return ProductDto.from(product.get());
+    }
+
+    public void updateProductPrice1(Long productId, double newPrice) {
         DefaultTransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
         transactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
 
         TransactionStatus transactionStatus = transactionManager.getTransaction(transactionDefinition);
         try {
-            Optional<HelloProduct> product = helloProductRepository.findById(productId);
+            Optional<Product> product = productRepository.findById(productId);
             product.get().setPrice(newPrice);
-            helloProductRepository.save(product.get());
+            productRepository.save(product.get());
 
             transactionManager.commit(transactionStatus);
         } catch (Exception e) {
@@ -35,9 +41,19 @@ public class HelloProductService {
     }
 
     @Transactional
-    public void updateProductPriceV2(Long productId, double newPrice) {
-        Optional<HelloProduct> product = helloProductRepository.findById(productId);
+    public void updateProductPrice2(Long productId, double newPrice) {
+        Optional<Product> product = productRepository.findById(productId);
         product.get().setPrice(newPrice);
-        helloProductRepository.save(product.get());
+        productRepository.save(product.get());
+    }
+
+    public ProductDto saveProduct(String name, double price) {
+        Product product = new Product();
+        product.setName(name);
+        product.setPrice(price);
+
+        productRepository.save(product);
+
+        return ProductDto.from(product);
     }
 }

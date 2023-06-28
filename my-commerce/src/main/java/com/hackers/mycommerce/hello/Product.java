@@ -6,10 +6,13 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter @Getter
+@Setter
+@Getter
 @Entity
-public class HelloStudent {
-    @Id @GeneratedValue
+public class Product {
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
+    private double price;
 }

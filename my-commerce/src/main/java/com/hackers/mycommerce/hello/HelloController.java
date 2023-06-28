@@ -9,18 +9,30 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class HelloController {
 
-    private final HelloService helloService;
-
-    @GetMapping("/hello/v1")
+    @GetMapping("hello-string")
     @ResponseBody
-    public HelloStudentDto helloApi(@RequestParam("name")String name) {
-        return helloService.getStudent(name);
+    public String helloString(@RequestParam("id") String id) {
+        return "hello! " + id;
     }
 
-    @PostMapping("/hello/v1")
+    @GetMapping("hello-api")
     @ResponseBody
-    public ResponseEntity<HelloStudentDto> helloApiPost(@RequestBody HelloStudent student) {
-        return ResponseEntity.ok().body(helloService.saveStudent(student.getName()));
+    public Hello helloApi(@RequestParam("id") String id) {
+        Hello hello = new Hello();
+        hello.setId(id);
+        return hello;
+    }
+
+    static class Hello {
+        private String id;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
     }
 
 }
