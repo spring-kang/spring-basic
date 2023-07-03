@@ -3,6 +3,7 @@ package com.hackers.mycommerce.hello;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -21,6 +22,12 @@ public class HelloController {
         Hello hello = new Hello();
         hello.setId(id);
         return hello;
+    }
+
+    @GetMapping("hello-view")
+    public String hello(@RequestParam(value = "name", required = false) String name, Model model) {
+        model.addAttribute("data" , name);
+        return "hello";
     }
 
     static class Hello {
