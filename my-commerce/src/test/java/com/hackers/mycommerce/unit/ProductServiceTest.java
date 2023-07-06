@@ -1,9 +1,9 @@
 package com.hackers.mycommerce.unit;
 
-import com.hackers.mycommerce.hello.Product;
+import com.hackers.mycommerce.hello.AProduct;
 import com.hackers.mycommerce.hello.ProductDto;
-import com.hackers.mycommerce.hello.ProductRepository;
-import com.hackers.mycommerce.hello.ProductService;
+import com.hackers.mycommerce.hello.ProductARepository;
+import com.hackers.mycommerce.hello.ProductAService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +18,13 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class ProductServiceTest {
     @MockBean
-    ProductRepository productRepository;
+    ProductARepository productRepository;
     @Autowired
-    ProductService productService;
+    ProductAService productService;
 
     @Test
     public void getProductTest() {
-        Product product = new Product();
+        AProduct product = new AProduct();
         product.setName("book");
         product.setPrice(10000.0);
         when(productRepository.findByName("book")).thenReturn(Optional.of(product));
@@ -38,7 +38,7 @@ public class ProductServiceTest {
 
     @Test
     public void saveProductTest() {
-        Product product = new Product();
+        AProduct product = new AProduct();
         product.setName("book");
         product.setPrice(10000.0);
         when(productRepository.save(product)).thenReturn(product);

@@ -1,6 +1,5 @@
 package com.hackers.mycommerce.hello;
 
-import com.hackers.mycommerce.hello.config.DiscountPolicy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -13,13 +12,13 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ProductService {
+public class ProductAService {
 
-    private final ProductRepository productRepository;
+    private final ProductARepository productRepository;
     private final PlatformTransactionManager transactionManager;
 
     public ProductDto getProduct(String name) {
-        Optional<Product> product = productRepository.findByName(name);
+        Optional<AProduct> product = productRepository.findByName(name);
         return ProductDto.from(product.get());
     }
 
@@ -29,7 +28,7 @@ public class ProductService {
 
         TransactionStatus transactionStatus = transactionManager.getTransaction(transactionDefinition);
         try {
-            Optional<Product> product = productRepository.findById(productId);
+            Optional<AProduct> product = productRepository.findById(productId);
             product.get().setPrice(newPrice);
             productRepository.save(product.get());
 
@@ -42,13 +41,13 @@ public class ProductService {
 
     @Transactional
     public void updateProductPrice2(Long productId, double newPrice) {
-        Optional<Product> product = productRepository.findById(productId);
+        Optional<AProduct> product = productRepository.findById(productId);
         product.get().setPrice(newPrice);
         productRepository.save(product.get());
     }
 
     public ProductDto saveProduct(String name, double price) {
-        Product product = new Product();
+        AProduct product = new AProduct();
         product.setName(name);
         product.setPrice(price);
 

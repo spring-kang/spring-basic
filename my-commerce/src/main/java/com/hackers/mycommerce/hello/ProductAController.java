@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
-public class ProductController {
-    private final ProductService productService;
+public class ProductAController {
+    private final ProductAService productService;
     @GetMapping("/products/{name}")
     @ResponseBody
     public ProductDto getProduct(@PathVariable("name") String name) {

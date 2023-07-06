@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-public class Product {
+public class AProduct {
     @Id
     @GeneratedValue
     private Long id;

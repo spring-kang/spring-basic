@@ -11,7 +11,7 @@ public class ProductDto {
     private String name;
     private double price;
 
-    public static ProductDto from (Product product) {
+    public static ProductDto from (AProduct product) {
         return  ProductDto.builder()
                 .name(product.getName())
                 .price(product.getPrice())

@@ -1,16 +1,15 @@
 package com.hackers.mycommerce.unit;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hackers.mycommerce.hello.ProductController;
+import com.hackers.mycommerce.hello.ProductAController;
 import com.hackers.mycommerce.hello.ProductDto;
-import com.hackers.mycommerce.hello.ProductService;
+import com.hackers.mycommerce.hello.ProductAService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -20,11 +19,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(ProductController.class)
+@WebMvcTest(ProductAController.class)
 public class ProductControllerTest {
     @Autowired private MockMvc mockMvc;
     @MockBean
-    ProductService productService;
+    ProductAService productService;
 
     @Test
     void getProductTest() throws Exception {
