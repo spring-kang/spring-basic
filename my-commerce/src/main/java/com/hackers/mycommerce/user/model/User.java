@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name="user_tbl")
 @Getter
@@ -22,4 +25,12 @@ public class User {
     private String phoneNumber;
 
     private String encPassword;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<UserRole> roles = new ArrayList<>();
+
+    public void giveUserRoles(List<UserRole> roles) {
+        this.roles = roles;
+        roles.forEach(userRole -> userRole.setUser(this));
+    }
 }

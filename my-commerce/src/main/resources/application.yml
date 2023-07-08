@@ -10,10 +10,13 @@ spring:
     url: jdbc:h2:tcp://localhost/~/my-commerce
     username: sa
     password:
-
   jpa:
     # show-sql: true
     hibernate:
       ddl-auto: create
     generate-ddl: true
     defer-datasource-initialization: true
+
+jwt:
+  secret:
+    key: sdfks^diSK*(jmkajs121JKLASDJ*7!M/SAS
