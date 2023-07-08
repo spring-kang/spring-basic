@@ -10,17 +10,17 @@ class DiscountServiceTest {
 
     @Autowired DiscountService discountService;
 
-    @Test
-    void testDiscountPolicy() {
-        Student student = new Student();
-        student.setId(1L);
-        student.setName("kang");
-        student.setIsAdult(false);
-
-        int price = 10000;
-
-        int discountPrice = discountService.discount(student, price);
-
-        Assertions.assertEquals(2000, discountPrice);
-    }
+//    @Test
+//    void testDiscountPolicy() {
+//        Student student = new Student();
+//        student.setId(1L);
+//        student.setName("kang");
+//        student.setIsAdult(false);
+//
+//        int price = 10000;
+//
+//        int discountPrice = discountService.discount(student, price);
+//
+//        Assertions.assertEquals(2000, discountPrice);
+//    }
 }

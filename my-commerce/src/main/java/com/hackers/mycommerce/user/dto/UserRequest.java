@@ -1,6 +1,6 @@
 package com.hackers.mycommerce.user.dto;
 
-import com.hackers.mycommerce.user.model.User;
+import com.hackers.mycommerce.user.model.AgeType;
 import lombok.Builder;
 import lombok.Value;
 
@@ -12,4 +12,5 @@ public class UserRequest {
     private String email;
     private String phoneNumber;
     private String password;
+    private AgeType ageType;
 }

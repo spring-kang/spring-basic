@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -20,7 +19,7 @@ class UserServiceTest {
     @MockBean
     UserRepository userRepository;
     @Autowired
-    UserService userService;
+    UserServiceImpl userService;
 
     @Test
     public void joinUserTest() {

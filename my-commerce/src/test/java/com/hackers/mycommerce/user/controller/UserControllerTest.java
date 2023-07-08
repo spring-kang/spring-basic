@@ -1,16 +1,13 @@
 package com.hackers.mycommerce.user.controller;
 
-import com.hackers.mycommerce.user.dto.UserRequest;
 import com.hackers.mycommerce.user.dto.UserResponse;
-import com.hackers.mycommerce.user.service.UserService;
+import com.hackers.mycommerce.user.service.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -23,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class UserControllerTest {
     @Autowired private MockMvc mockMvc;
     @MockBean
-    UserService userService;
+    UserServiceImpl userService;
 
     @Test
     void getUserTest() throws Exception {

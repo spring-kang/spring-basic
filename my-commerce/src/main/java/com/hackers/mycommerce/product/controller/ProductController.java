@@ -3,6 +3,7 @@ package com.hackers.mycommerce.product.controller;
 import com.hackers.mycommerce.product.dto.ProductRequest;
 import com.hackers.mycommerce.product.dto.ProductResponse;
 import com.hackers.mycommerce.product.service.ProductService;
+import com.hackers.mycommerce.product.service.ProductServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

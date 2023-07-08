@@ -1,6 +1,7 @@
 package com.hackers.mycommerce.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.hackers.mycommerce.user.model.AgeType;
 import com.hackers.mycommerce.user.model.User;
 import com.hackers.mycommerce.user.model.UserRole;
 import lombok.Builder;
@@ -18,6 +19,7 @@ public class UserResponse {
     private String address;
     private String email;
     private String phoneNumber;
+    private AgeType ageType;
     private List<UserRole> roles = new ArrayList<>();
     @JsonIgnore
     private String token;
@@ -28,6 +30,7 @@ public class UserResponse {
                 .address(user.getAddress())
                 .email(user.getEmail())
                 .phoneNumber(user.getPhoneNumber())
+                .ageType(user.getAgeType())
                 .build();
         user.getRoles().forEach(role -> userResponse.getRoles().add(role));
 
@@ -40,6 +43,7 @@ public class UserResponse {
                 .address(user.getAddress())
                 .email(user.getEmail())
                 .phoneNumber(user.getPhoneNumber())
+                .ageType(user.getAgeType())
                 .token(token)
                 .build();
         user.getRoles().forEach(role -> userResponse.getRoles().add(role));

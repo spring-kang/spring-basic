@@ -26,6 +26,10 @@ public class User {
 
     private String encPassword;
 
+    @Enumerated(EnumType.STRING)
+    private AgeType ageType;
+
+
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<UserRole> roles = new ArrayList<>();
 

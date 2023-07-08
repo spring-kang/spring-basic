@@ -4,7 +4,7 @@ import com.hackers.mycommerce.user.dto.LoginRequest;
 import com.hackers.mycommerce.user.dto.UserRequest;
 import com.hackers.mycommerce.user.dto.UserResponse;
 import com.hackers.mycommerce.user.service.UserService;
-import jakarta.servlet.http.HttpServletResponse;
+import com.hackers.mycommerce.user.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
