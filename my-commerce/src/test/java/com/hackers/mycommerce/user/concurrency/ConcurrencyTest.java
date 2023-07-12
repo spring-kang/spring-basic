@@ -1,6 +1,7 @@
 package com.hackers.mycommerce.user.concurrency;
 
 import com.hackers.mycommerce.order.dto.OrderRequest;
+import com.hackers.mycommerce.order.repository.OrderRepository;
 import com.hackers.mycommerce.order.service.OrderService;
 import com.hackers.mycommerce.product.model.Product;
 import com.hackers.mycommerce.product.repository.ProductRepository;
@@ -14,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,6 +33,8 @@ public class ConcurrencyTest {
     ProductRepository productRepository;
     @Autowired
     OrderService orderService;
+    @Autowired
+    OrderRepository orderRepository;
 
     @BeforeEach
     public void setUp() {
@@ -45,7 +49,7 @@ public class ConcurrencyTest {
         product.setDesc("product desc");
         product.setCategory("food");
         product.setPrice(15000);
-        product.setStock(50);
+        product.setStock(100);
 
         userRepository.save(user);
         productRepository.save(product);
@@ -53,24 +57,9 @@ public class ConcurrencyTest {
 
     @AfterEach
     public void clear() {
+        orderRepository.deleteAll();
         productRepository.deleteAll();
-    }
-
-    @Test
-    @Transactional
-    public void testStockDecrease() {
-        OrderRequest orderRequest = OrderRequest.builder()
-                .userId(1L)
-                .productId(1L)
-                .count(1)
-                .build();
-
-        Long order = orderService.createOrder(orderRequest);
-
-        Optional<Product> product = productRepository.findById(1L);
-
-        Assertions.assertEquals(49, product.get().getStock());
-
+        userRepository.deleteAll();
     }
 
     @Test
@@ -95,6 +84,7 @@ public class ConcurrencyTest {
                     Long order = orderService.createOrder(orderRequest);
                     System.out.println(order);
                     return order;
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     return null;
@@ -116,7 +106,7 @@ public class ConcurrencyTest {
         long finalStock = product.get().getStock();
 
         System.out.println("Final stock: " + finalStock);
-        Assertions.assertEquals(0, finalStock);
+        Assertions.assertEquals(50, finalStock);
     }
 
 }

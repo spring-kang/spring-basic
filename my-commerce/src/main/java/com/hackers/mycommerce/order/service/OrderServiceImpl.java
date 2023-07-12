@@ -45,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
         long discountPrice = product.get().getPrice()- discountPolicy.discount(user.get() ,product.get().getPrice());
 
         OrderItem orderItem = OrderItem.createOrderItem(product.get(), discountPrice, request.getCount());
+        productRepository.decrease(request.getCount(), product.get().getId());
         Order order = Order.from(user.get(), orderItem);
 
         orderRepository.save(order);

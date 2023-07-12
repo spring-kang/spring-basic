@@ -17,15 +17,19 @@ public class Product {
     private String desc;
     private long stock;
     private String category;
+
+//    @Version
+//    private long version;
+
     public void increase(long quantity) {
         this.stock += quantity;
     }
-    public void decrease(long quantity) {
-        long restStock = this.stock - quantity;
-        if (restStock < 0) {
-            throw new RuntimeException("need more stock");
-        }
-        this.stock = restStock;
-    }
+//    public void decrease(long quantity) {
+//        long restStock = this.stock - quantity;
+//        if (restStock < 0) {
+//            throw new RuntimeException("need more stock");
+//        }
+//        this.stock = restStock;
+//    }
 }
 
