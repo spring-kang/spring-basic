@@ -33,11 +33,11 @@ MyCommerce는 사용자, 주문 및 상품 관리 기능을 제공하는 커머�
 ### ProductService - 상품 생성, 수정 및 검색과 같은 상품 관련 작업을 처리합니다.
 
 ## 시작하기
-저장소 복제하기: git clone https://github.com/spring-kang/spring-basic.git
-프로젝트 디렉토리로 이동하기: cd mycommerce-app
-프로젝트 빌드하기: ./gradlew build
-애플리케이션 실행하기: ./gradlew bootRun
-애플리케이션 접속하기: http://localhost:8080
+- 저장소 복제하기: git clone https://github.com/spring-kang/spring-basic.git
+- 프로젝트 디렉토리로 이동하기: cd mycommerce-app
+- 프로젝트 빌드하기: ./gradlew build
+- 애플리케이션 실행하기: ./gradlew bootRun
+- 애플리케이션 접속하기: http://localhost:8080
 
 ## 문의사항 및 연락
 - 프로젝트 관련하여 문의 사항이 있는 경우, 아래 메일을 통해 연락 부탁드립니다.
