@@ -11,7 +11,7 @@ MyCommerce는 사용자, 주문 및 상품 관리 기능을 제공하는 커머�
 - JUnit 5
 - H2 Database
 
-## 컨트롤러
+## Controller
 ### UserController
 - /sign - 새로운 사용자를 생성하기 위한 POST 요청입니다.
 - /api/users/{id} - ID에 해당하는 사용자를 수정하기 위한 PUT 요청입니다.
@@ -27,11 +27,19 @@ MyCommerce는 사용자, 주문 및 상품 관리 기능을 제공하는 커머�
 - /api/products/{id} - ID에 해당하는 상품을 수정하기 위한 PUT 요청입니다.
 - /api/products/{id} - ID에 해당하는 상품을 검색하기 위한 GET 요청입니다.
 - /api/products - 모든 상품을 검색하기 위한 GET 요청입니다.
-## 서비스
+## Service
 ### UserService - 사용자 생성, 수정, 검색 및 삭제와 같은 사용자 관련 작업을 처리합니다.
 ### OrderService - 주문 생성, 취소 및 검색과 같은 주문 관련 작업을 처리합니다.
 ### ProductService - 상품 생성, 수정 및 검색과 같은 상품 관련 작업을 처리합니다.
-
+## Securitry 
+- 로그인 관련 Config, Filter, 토큰 Proider 기능을 제공합니다.
+- SecurityConfig
+- JwtAuthenticationFilter
+- JwtProvider
+## Policy
+- 유저 나이 타입에 따른 할인 정책을 제공합니다.
+- 할인정책에 대한 인터페이스와 구현체
+- 할인정책에 대한 Config 파일
 ## 시작하기
 - 저장소 복제하기: git clone https://github.com/spring-kang/spring-basic.git
 - 프로젝트 디렉토리로 이동하기: cd mycommerce-app
