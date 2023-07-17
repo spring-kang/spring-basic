@@ -29,8 +29,20 @@ MyCommerce는 사용자, 주문 및 상품 관리 기능을 제공하는 커머�
 - /api/products - 모든 상품을 검색하기 위한 GET 요청입니다.
 ## Service
 ### UserService - 사용자 생성, 수정, 검색 및 삭제와 같은 사용자 관련 작업을 처리합니다.
+- joinUser(UserRequest userRequest): 사용자 회원가입을 처리하고, 사용자 정보를 저장합니다.
+- login(LoginRequest request): 사용자 로그인을 처리하고, 인증 토큰을 생성하여 반환합니다.
+- updateUser(long id, UserRequest userRequest): ID에 해당하는 사용자 정보를 업데이트합니다.
+- getUser(long id): ID에 해당하는 사용자 정보를 조회합니다.
+- removeUser(long id): ID에 해당하는 사용자 정보를 삭제합니다.
 ### OrderService - 주문 생성, 취소 및 검색과 같은 주문 관련 작업을 처리합니다.
+- createOrder(OrderRequest request): 새로운 주문을 생성하고, 주문 정보를 저장합니다.
+- cancelOrder(Long orderId): 주문을 취소합니다.
+- getOrderDetails(Long orderId): 주문 세부 정보를 조회합니다.
 ### ProductService - 상품 생성, 수정 및 검색과 같은 상품 관련 작업을 처리합니다.
+- createProduct(ProductRequest request): 새로운 상품을 생성하고, 상품 정보를 저장합니다.
+- updateProduct(Long id, ProductRequest request): ID에 해당하는 상품 정보를 업데이트합니다.
+- getProductById(Long id): ID에 해당하는 상품 정보를 조회합니다.
+- getAllProducts(): 모든 상품 정보를 조회합니다.
 ## Securitry 
 - 로그인 관련 Config, Filter, 토큰 Proider 기능을 제공합니다.
 - SecurityConfig
